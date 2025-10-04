@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>the universe in my eyes - Priyanshi</title>
+    <meta name="description" content="interactive art portfolio: sketches & personal universe by priyanshi ">
+    <link rel="icon" href="./pri.jpeg"  style="border-radius: 50%;" type="image/png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/all.min.css">
+</head>
+<body>
+      <!-- Custom Cursor -->
+  <div class="cursor" id="cursor"></div>
+
+  <!-- Pencil Trail group -->
+  <div id="trail-root"></div>
+
+  <!-- Stars -->
+  <div id="star-field" aria-hidden="true"></div>
+
+  <!-- Floating nav -->
+  <nav aria-label="Main navigation">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- LANDING -->
+  <header id="home" class="landing">
+    <div class="container" style="text-align:center;">
+      <div style="display:flex;flex-direction:column;align-items:center;">
+        <div class="eye-portal" id="eyePortal" title="Click to enter Priyanshi's Gallery">
+          <!-- Replace with your own eye sketch -->
+          <img src="./art1.jpeg" alt="Priyanshi's eye sketch " id="eyeImg">
+          <div class="eyelid" aria-hidden="true"></div>
+        </div>
+
+        <div class="portal-hint" style="margin-top:18px;">
+          <div style="font-size:20px;font-weight:700;color:#0a1931">Enter the universe in my eyes</div>
+          <div style="margin-top:10px;color:#b3cfe5;font-size:14px;">Hover the eye • Click to open gallery • Move the mouse to draw</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about" class="about">
+    <div class="container" style="display:flex; align-items:center; justify-content:center; gap:30px;">
+      <div class="about-left">
+        <div class="handwritten">Priyanshi sharma</div>
+        <div class="text" style="margin-top:18px; font-size:15px; color:#f6fafd;">
+         " I'm a sketch-first artist who sees constellations in pencil strokes. I build dreamy, hand-drawn worlds in ink and charcoal,
+          then bring them online — mixing analog textures and digital motion. This site is my universe: the eye is the portal, each sketch a star. "
+        </div>
+      </div>
+
+      <div class="portrait" aria-hidden="true">
+        <!-- optionally put a portrait or signature -->
+        <img src="./poto.jpeg" alt="portrait placeholder ">
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery" class="gallery">
+    <div class="container">
+      <h2 style="font-size:26px;margin-bottom:8px;color: #f6fafd">Constellations of My Art</h2>
+      <p style="color:#b3cfe5; margin-bottom:18px;">Click any sketch to view full — some stars are secret keys.</p>
+
+      <div class="gallery-grid" id="galleryGrid">
+        <!-- art cards -->
+        <div class="art-card" data-title="Sketch: Moonlight Study" data-src="./WhatsApp Image 2025-07-21 at 5.47.22 PM.jpeg" >
+          <div class="sparkle"></div>
+          <img src="./WhatsApp Image 2025-07-21 at 5.47.22 PM.jpeg" alt="sketch 1">
+          
+          <div class="art-info">Moonlight study — graphite on paper</div>
+        </div>
+        <div class="art-card" data-title="Sketch: Whisper" data-src="./WhatsApp Image 2025-07-21 at 5.47.22 PM (1).jpeg">
+          <div class="sparkle"></div>
+          <img src="./WhatsApp Image 2025-07-21 at 5.47.22 PM (1).jpeg" alt="sketch 2">
+          <div class="art-info">Whisper — charcoal & pastel</div>
+        </div>
+        <div class="art-card" data-title="Sketch: Eyes of Night" data-src="./WhatsApp Image 2025-07-21 at 5.47.21 PM.jpeg">
+          <div class="sparkle"></div>
+          <img src="./WhatsApp Image 2025-07-21 at 5.47.21 PM.jpeg" alt="sketch 3">
+          <div class="art-info">Eyes of Night — mixed media</div>
+        </div>
+        <div class="art-card" data-title="Sketch: joys of life" data-src="./sketch.jpg">
+          <div class="sparkle"></div>
+          <img src="./sketch.jpg" alt="sketch 3">
+          <div class="art-info">Ganpati  — joys of life</div>
+        </div>
+        <!-- add more as needed -->
+      </div>
+    </div>
+  </section>
+  
+  
+
+  <!-- Modal for viewing art -->
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-content" role="document">
+      <img id="modalImage" src="./pics/CLOSE.jpg" alt="">
+      <div class="modal-caption">
+        <div id="modalTitle" style="font-size:18px;font-weight:800;color:#f6fafd;margin-bottom:8px;"></div>
+        <div id="modalDesc" style="color:#b3cfe5;"></div>
+        <div style="margin-top:18px;">
+          <button class="btn" id="closeModal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EASTER EGG TOAST -->
+  <div class="toast" id="toast">✨ You just saw the universe through Priyanshi's eyes ✨</div>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <form id="contactForm" onsubmit="return false;">
+        <h3 style="font-size:20px;color:#f6fafd; margin-bottom:8px;">Send me starlight</h3>
+        <div style="color:
+        #b3cfe5; margin-bottom:12px;">Leave a note — I read them all.</div>
+
+        <div class="field">
+          <input  id="nameField" placeholder="Your name" required>
+        </div>
+        <div class="field">
+          <input id="emailField" placeholder="Email (optional)">
+        </div>
+        <div class="field">
+          <textarea id="messageField" placeholder="Message" rows="6" required></textarea>
+        </div>
+        <div style="display:flex; gap:10px; align-items:center;">
+          <button class="btn" id="sendBtn">Send</button>
+          <div id="sendStatus" style="color:#f6fafd; font-weight:700; display:none;">Thanks ✨</div>
+        </div>
+      </form>
+    </div>
+  </section>
+  <div class="baburao">
+    <section>
+      <p style="font-size: medium; font-family: 'Times New Roman', Times, serif; padding: 13px ;">connect with me </p>
+      <div class="socials">
+        <a href="https://instagram.com/bettlessszzzzzz" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i>
+          <img src="./iglogo.jpg.jpeg" alt="Instagram">@betlessszzzzzz
+        </a>
+        <a href="https://instagram.com/tinted_truths" target="_blank"  rel="noopener noreferrer"><i class="fab fa-instagram"></i>
+          <img src="./iglogo.jpg.jpeg" alt="Instagram"> @tinted_truths
+        </a>
+        <a href="https://www.GitHub.com/bizzy-boo05" target="_blank"><i class="fab fa-GitHub"></i>GitHub</a>
+      </div>
+    </section>
+  
+    <footer>
+    ✨🎨 by <strong>Priyanshi</strong> • Click the stars — some are secrets.
+    </footer>
+  </div>
+
+  
+  
+    
+  <script>
+     /* ========== UTILITY & ELEMENTS ========== */
+       
+    const starField = document.getElementById('star-field');
+    const cursor = document.getElementById('cursor');
+    const trailRoot = document.getElementById('trail-root');
+    const toast = document.getElementById('toast');
+
+    /* ========== CURSOR & TRAIL ========== */
+    let trailDots = [];
+    const TRAIL_COUNT = 8;
+    for(let i=0;i<TRAIL_COUNT;i++){
+      const d = document.createElement('div');
+      d.className = 'trail';
+      d.style.opacity = (0.1 + i*(0.08)).toString();
+      trailRoot.appendChild(d);
+      trailDots.push(d);
+    }
+
+    let mouse = {x: window.innerWidth/2, y: window.innerHeight/2};
+    let pos = {x: mouse.x, y: mouse.y};
+    document.addEventListener('mousemove', (e)=>{
+      mouse.x = e.clientX; mouse.y = e.clientY;
+      cursor.style.left = mouse.x + 'px';
+      cursor.style.top = mouse.y + 'px';
+
+      // show pencil strokes more when moving fast
+      createTrailDot(mouse.x, mouse.y);
+    });
+    // keep cursor in center on touch (mobile)
+    document.addEventListener('touchmove', (e)=>{
+      const t = e.touches[0];
+      cursor.style.left = t.clientX + 'px';
+      cursor.style.top = t.clientY + 'px';
+      createTrailDot(t.clientX, t.clientY);
+    });
+
+    // simple trail physics
+    function createTrailDot(x,y){
+      const dot = trailDots.shift();
+      dot.style.left = (x - 5) + 'px';
+      dot.style.top = (y - 5) + 'px';
+      dot.style.opacity = 1;
+      trailDots.push(dot);
+      // fade quickly
+      setTimeout(()=>{ dot.style.opacity = 0; }, 350);
+    }
+
+    // hide cursor when leaving window
+    document.addEventListener('mouseleave', ()=>{ cursor.style.display='none'; });
+    document.addEventListener('mouseenter', ()=>{ cursor.style.display='flex'; });
+
+    /* ========== STARFIELD (random + PV constellation) ========== */
+    const STAR_COUNT = 100;
+    function randRange(a,b){ return a + Math.random()*(b-a); }
+
+    // create random stars (non-clickable)
+    for(let i=0;i<STAR_COUNT;i++){
+      const s = document.createElement('div');
+      s.className = 'star' + (Math.random()>0.9 ? ' big' : '');
+      s.style.top = (Math.random()*100) + '%';
+      s.style.left = (Math.random()*100) + '%';
+      s.style.opacity = (0.35 + Math.random()*0.9);
+      s.style.transform = `scale(${0.6 + Math.random()*1.6})`;
+      starField.appendChild(s);
+    }
+
+    // create clickable stars scattered (a few)
+    const clickablePositions = [];
+    for(let i=0;i<12;i++){
+      const s = document.createElement('div');
+      s.className = 'star clickable';
+      s.style.top = (Math.random()*85 + 8) + '%';
+      s.style.left = (Math.random()*92 + 4) + '%';
+      s.dataset.key = 'rand'+i;
+      s.title = "A star — click me";
+      // small bounce animation
+      s.animate([{transform:'translateY(0)'},{transform:'translateY(-6px)'},{transform:'translateY(0)'}],{duration:2000+Math.random()*3500,iterations:Infinity,delay:Math.random()*500});
+      s.addEventListener('click', ()=> showToast("✨ A secret star whispered: keep sketching ✨"));
+      starField.appendChild(s);
+      clickablePositions.push(s);
+    }
+
+    // Special constellation that spells PV (coordinates normalized 0..1)
+    // Coordinates drawn to approximate PV shape on screen
+    const pvMap = [
+      [0.22,0.28],[0.24,0.34],[0.26,0.40],[0.27,0.47],[0.27,0.55],[0.25,0.62],[0.23,0.68],
+      [0.32,0.28],[0.36,0.36],[0.40,0.44],[0.44,0.52],[0.48,0.6],[0.52,0.68]
+    ];
+    // place PV stars (one of them will be "the key")
+    pvMap.forEach((pt, idx)=>{
+      const s = document.createElement('div');
+      s.className = 'star clickable';
+      s.style.top = (pt[1]*100) + '%';
+      s.style.left = (pt[0]*100) + '%';
+      s.style.background = (idx === 3) ? 'linear-gradient(90deg,#ffd3b8,#ffc6e8)' : '#fff';
+      s.title = "Constellation";
+      // make the 4th star the special egg
+      if(idx === 3){
+        s.dataset.special = 'pv-key';
+        s.addEventListener('click', triggerEasterEgg);
+      } else {
+        s.addEventListener('click', ()=> showToast("constellation: ✨ keep exploring ✨"));
+      }
+      starField.appendChild(s);
+    });
+
+    /* ========== EYE PORTAL BEHAVIOR ========== */
+    const eyePortal = document.getElementById('eyePortal');
+    eyePortal.addEventListener('click', ()=>{
+      // zoom in effect then scroll to gallery
+      eyePortal.animate([{transform:'scale(1)'},{transform:'scale(1.8)'}],{duration:600,easing:'cubic-bezier(.2,.9,.2,1)'});
+      setTimeout(()=>{ document.getElementById('gallery').scrollIntoView({behavior:'smooth'}); showToast("Entering the gallery..."); }, 420);
+    });
+
+    /* ========== GALLERY MODAL ========== */
+    const artCards = document.querySelectorAll('.art-card');
+    const modal = document.getElementById('modal');
+    const modalImage = document.getElementById('modalImage');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+    const closeModalBtn = document.getElementById('closeModal');
+
+    artCards.forEach(card=>{
+      card.addEventListener('click', ()=>{
+        const src = card.dataset.src;
+        const title = card.dataset.title || 'Artwork';
+        modalImage.src = src;
+        modalImage.alt = title;
+        modalTitle.textContent = title;
+        modalDesc.textContent = "By Priyanshi • Click close or outside to exit";
+        modal.classList.add('show');
+        modal.setAttribute('aria-hidden','false');
+      });
+    });
+    closeModalBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e)=>{ if(e.target === modal) closeModal(); });
+    function closeModal(){
+      modal.classList.remove('show');
+      modal.setAttribute('aria-hidden','true');
+      modalImage.src = '';
+    }
+
+    /* ========== TOAST (easter egg / messages) ========== */
+    let toastTimer = null;
+    function showToast(msg,ms=3500){
+      toast.textContent = msg;
+      toast.style.display = 'block';
+      toast.style.opacity = 1;
+      if(toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(()=>{ toast.style.opacity = 0; setTimeout(()=> toast.style.display='none',400); }, ms);
+    }
+
+    function triggerEasterEgg(){
+      // special animation + message
+      showToast("✨ You discovered my secret constellation! ✨", 4500);
+      // small major effect: flash a gentle glow on page
+      document.body.animate([{filter:'brightness(1)'},{filter:'brightness(1.18)'},{filter:'brightness(1)'}],{duration:900, easing:'ease-out'});
+      // show a personal modal style text center
+      setTimeout(()=> {
+        const toast2 = document.createElement('div');
+        toast2.style.position = 'fixed';
+        toast2.style.left='50%'; toast2.style.top='30%';
+        toast2.style.transform='translate(-50%,-50%)';
+        toast2.style.padding='22px 28px';
+        toast2.style.background='linear-gradient(90deg, rgba(255,230,230,0.06), rgba(255,230,200,0.04))';
+        toast2.style.border='1px solid rgba(255,255,255,0.06)';
+        toast2.style.borderRadius='12px';
+        toast2.style.zIndex=99999;
+        toast2.innerHTML = `<div style="font-weight:900;color:var(--accent-2);font-size:18px;margin-bottom:6px;">You saw it first</div>
+          <div style="color:rgba(255,255,255,0.9);max-width:420px">"You just saw the universe through Priyanshi's eyes" — keep that spark.</div>`;
+        document.body.appendChild(toast2);
+        setTimeout(()=>{ toast2.animate([{opacity:1},{opacity:0}],{duration:700}); setTimeout(()=>document.body.removeChild(toast2),700); }, 3500);
+      }, 400);
+    }
+
+    /* ========== CONTACT FORM (front-end effect only) ========== */
+    const contactForm = document.getElementById('contactForm');
+    const sendBtn = document.getElementById('sendBtn');
+    const sendStatus = document.getElementById('sendStatus');
+
+    sendBtn.addEventListener('click', ()=>{
+      // micro-validation
+      const name = document.getElementById('nameField').value.trim();
+      const msg = document.getElementById('messageField').value.trim();
+      if(!name || !msg){ showToast("Please add your name & message ✨"); return; }
+
+      sendBtn.disabled = true;
+      sendBtn.textContent = "Sending...";
+      sendBtn.style.transform = 'translateY(0)';
+      // faux send animation
+      setTimeout(()=>{
+        sendBtn.textContent = "Sent";
+        sendBtn.disabled = false;
+        sendStatus.style.display = 'block';
+        showToast("Starlight delivered ✨", 2500);
+        // clear form lightly
+        document.getElementById('messageField').value = "";
+      }, 1100);
+      setTimeout(()=>{ sendBtn.textContent = "Send"; sendStatus.style.display='none'; }, 2700);
+    });
+
+    /* ========== INTERACTIVE PARALLAX ON MOUSE MOVE + SCROLL ========== */
+    document.addEventListener('mousemove',(e)=>{
+      // move starfield slightly for parallax
+      const cx = e.clientX / window.innerWidth - 0.5;
+      const cy = e.clientY / window.innerHeight - 0.5;
+      starField.style.transform = `translate(${cx*8}px, ${cy*6}px)`;
+    });
+    window.addEventListener('scroll', ()=>{
+      const sc = window.scrollY;
+      // subtle parallax shift of stars
+      starField.style.transform = `translate(0, ${sc*0.02}px)`;
+    });
+
+    /* ========== INITIAL SMALL ENTRANCE EFFECTS ========== */
+    window.addEventListener('load', ()=>{
+      // small welcome pop
+      setTimeout(()=> showToast("Welcome to Priyanshi's Universe ✨", 2200), 600);
+    });
+
+    /* accessibility: keyboard close modal */
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === 'Escape'){ closeModal(); }
+    });
+
+    /* ========== END SCRIPT ========== */
+    
+
+
+  </script> 
+
+  <canvas id="mirrorportal"></canvas>
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const canvas =document.getElementById("mirrorportal");
+    const ctx = canvas.getContext("2d");
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+  })
+    
+    let particles = [];
+
+    class particle{
+      constructor(x,y) {
+        this.x= x;
+        this.y = y;
+        this.size = math.random() *5 +1;
+        this.speedx= (math.random() *2 -1)*1.5;
+        this.speedy= (math.random() *2 -1)*1.5;
+      }
+      update() {
+        this.x += this.speedx;
+        this.y +=this.speedy;
+
+        if (this.size >0.2) this.size -= 0.05;
+
+      }
+      draw(){
+        ctx.beginpath();
+        ctx.arc(this.x, this.y, this.size, 0, math.PI *2);
+        ctx.strokestyle - "rgba(0,0,0,0.5)";
+        ctx.stroke();
+
+      }
+    }
+
+    window.addEventListener("mousemove",function(e) {
+      for (let i= 0; i<5; i++) {
+        particles.push(new particles(e.x,e.y));
+
+      }
+    });
+    function animate() {
+      ctx.clearrect(0,0,canvas.width, canvas.height);
+      for (let i = 0; i <particles.length; i++) {
+        particles[i].update();
+        particles[i].draw();
+
+        if (particles[i].size<= 0.2) {
+          particles.splice(i, 1);
+          i--;
+        }
+      }
+      requestAnimationFrame(animate);
+
+    }
+    animate();
+
+    window.addEventListener("resize",function() {
+      canvas.width = window.innerwidth;
+      canvas.height = window.innerHeight;
+
+    });
+
+  </script>
+   
+  
+    
+</body>
+</html>
